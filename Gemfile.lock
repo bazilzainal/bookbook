@@ -62,6 +62,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ansi (1.5.0)
     bindex (0.8.1)
     bootsnap (1.7.2)
       msgpack (~> 1.0)
@@ -98,6 +99,11 @@ GEM
     method_source (1.0.0)
     mini_mime (1.0.3)
     minitest (5.14.4)
+    minitest-reporters (1.4.3)
+      ansi
+      builder
+      minitest (>= 5.0)
+      ruby-progressbar
     msgpack (1.4.2)
     nio4r (2.5.7)
     nokogiri (1.11.7-arm64-darwin)
@@ -148,6 +154,7 @@ GEM
       ffi (~> 1.0)
     regexp_parser (2.1.1)
     rexml (3.2.5)
+    ruby-progressbar (1.11.0)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -210,7 +217,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  minitest
+  minitest-reporters
   pg (= 1.2.3)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
