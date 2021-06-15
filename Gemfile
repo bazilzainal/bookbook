@@ -31,6 +31,7 @@ group :development, :test do
   gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rexml'
 end
 
 group :development do
