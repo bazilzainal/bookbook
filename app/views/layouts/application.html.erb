@@ -6,7 +6,16 @@
 <body>
   <%= render 'layouts/navbar' %>
   <div class="container">
+
+  <%# If devise/anything else pops up a notice, it will show here %>
+    <% if notice %>
+      <br/>
+      <p class="notice"><%= notice %></p>
+    <% end %>  
+
+    <%# Main body from other views will render here. %>
     <%= yield %>
+
     <%= render 'layouts/footer' %>
   </div>
 </body>
