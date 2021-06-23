@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :books
+  resources :reading_lists
   devise_for :users
   get 'users/new'
   root 'static_pages#home'

@@ -1,0 +1,2 @@
+class ReadingList < ApplicationRecord
+end
