@@ -1,10 +1,19 @@
-<footer class="footer"> <small>
-        The only library book checker in Singapore. </small>
-    <nav>
-        <ul>
-            <li><%= link_to "About", about_path %></li>
-            <li><%= link_to "Contact", contact_path %></li>
-            <li><a target ="_blank" href="https://bazmoves.com/">Bazmoves</a></li>
+<!-- Footer -->
+<footer class="page-footer fixed-bottom bg-light">
+    <div class="container py-4 pb-5">
+        <!-- Footer Links -->
+    <hr>
+        <small>Bookbook</small>
+        <ul class="list-inline" style="float: right">
+            <li class="list-inline-item"><%= link_to "About", about_path, class: "text-secondary" %></li>
+            <li class="list-inline-item"><%= link_to "Contact", contact_path, class: "text-secondary" %></li>
         </ul>
-    </nav>
+    </div>
+
+
+    <!-- Copyright -->
+    <div class="footer-copyright bg-secondary text-center py-1 text-light"><small>© 2021 Copyright: Bookbook Sg</small>
+    </div>
+
 </footer>
+<!-- Footer -->
