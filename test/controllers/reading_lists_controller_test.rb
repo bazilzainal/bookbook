@@ -17,7 +17,7 @@ class ReadingListsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create reading_list" do
     assert_difference('ReadingList.count') do
-      post reading_lists_url, params: { reading_list: { created_at: @reading_list.created_at, name: @reading_list.name } }
+      post reading_lists_url, params: { reading_list: { name: @reading_list.name, user_id: @reading_list.user_id } }
     end
 
     assert_redirected_to reading_list_url(ReadingList.last)
@@ -34,7 +34,7 @@ class ReadingListsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update reading_list" do
-    patch reading_list_url(@reading_list), params: { reading_list: { created_at: @reading_list.created_at, name: @reading_list.name } }
+    patch reading_list_url(@reading_list), params: { reading_list: { name: @reading_list.name, user_id: @reading_list.user_id } }
     assert_redirected_to reading_list_url(@reading_list)
   end
 

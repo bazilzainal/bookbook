@@ -6,7 +6,8 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Created at</th>
+      <th>User</th>
+      <th>ID</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +16,8 @@
     <% @reading_lists.each do |reading_list| %>
       <tr>
         <td><%= reading_list.name %></td>
-        <td><%= reading_list.created_at %></td>
+        <td><%= reading_list.user_id %></td>
+        <td><%= reading_list.id %></td>
         <td><%= link_to 'Show', reading_list %></td>
         <td><%= link_to 'Edit', edit_reading_list_path(reading_list) %></td>
         <td><%= link_to 'Destroy', reading_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>

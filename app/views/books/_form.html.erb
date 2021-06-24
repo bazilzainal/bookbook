@@ -31,6 +31,15 @@
     <%= form.text_field :location %>
   </div>
 
+  <div class="field">
+    <%= form.label :reading_list_id %>
+    <%= form.number_field :reading_list_id %>
+  </div>
+
+  <div class="field">
+    <%= form.number_field :user_id, value: current_user.id, type: :hidden %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

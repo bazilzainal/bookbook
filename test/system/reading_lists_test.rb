@@ -14,8 +14,8 @@ class ReadingListsTest < ApplicationSystemTestCase
     visit reading_lists_url
     click_on "New Reading List"
 
-    fill_in "Created at", with: @reading_list.created_at
     fill_in "Name", with: @reading_list.name
+    fill_in "User", with: @reading_list.user_id
     click_on "Create Reading list"
 
     assert_text "Reading list was successfully created"
@@ -26,8 +26,8 @@ class ReadingListsTest < ApplicationSystemTestCase
     visit reading_lists_url
     click_on "Edit", match: :first
 
-    fill_in "Created at", with: @reading_list.created_at
     fill_in "Name", with: @reading_list.name
+    fill_in "User", with: @reading_list.user_id
     click_on "Update Reading list"
 
     assert_text "Reading list was successfully updated"

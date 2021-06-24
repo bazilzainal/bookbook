@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  created_at: MyString
+  user_id: 1
 
 two:
   name: MyString
-  created_at: MyString
+  user_id: 1
