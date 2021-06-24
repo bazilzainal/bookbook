@@ -9,6 +9,34 @@
   <strong>User:</strong>
   <%= @reading_list.user_id %>
 </p>
+<table>
+<thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>ISBN</th>
+      <th>Availability</th>
+      <th>Location</th>
+      <th>Reading List</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+<tbody>
+    <% @reading_list.books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.author %></td>
+        <td><%= book.isbn %></td>
+        <td><%= book.availability %></td>
+        <td><%= book.location %></td>
+        <td><%= book.reading_list_id %></td>
+        <td><%= link_to 'Show', book %></td>
+        <td><%= link_to 'Edit', edit_book_path(book) %></td>
+        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_reading_list_path(@reading_list) %> |
 <%= link_to 'Back', reading_lists_path %>
