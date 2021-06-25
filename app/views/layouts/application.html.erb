@@ -5,7 +5,7 @@
 <body>
   <%= render 'layouts/navbar' %>
 
-  <div class="container pt-5">
+  <div class="container pt-5 pb-5">
     <%# If devise/anything else pops up a notice, it will show here %>
     <% if notice %>
     <br />
@@ -23,10 +23,16 @@
     <% end %>
 
     <%# Main body from other views will render here. %>
-    
+
     <%= yield %>
     <br/>
   </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
 
     <%= render 'layouts/footer' %>
 

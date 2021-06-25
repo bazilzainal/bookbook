@@ -1,33 +1,41 @@
-<table>
+<h3>Books</h3>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
       <th>Author</th>
+      <th>ISBN</th>
       <th>Availability</th>
       <th>Location</th>
       <th>Reading List</th>
-      <th colspan="3"></th>
+      <th>Owner</th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @books.each do |book| %>
       <tr>
-        <td><%= book.title %></td>
+        <td><%= link_to book.title, book %></td>
         <td><%= book.author %></td>
+        <td><%= book.isbn %></td>
         <td><%= book.availability %></td>
         <td><%= book.location %></td>
-        <td><%= book.reading_list_id %></td>
-        <td><%= link_to 'Show', book %></td>
+        <% if book.reading_list %>
+          <td><%= book.reading_list_id %></td>
+          <td><%= book.reading_list.user.email %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<h3>Reading Lists</h3>
 <table class="table table-striped table-hover">
-  <table>
   <thead>
     <tr>
       <th>Name</th>
