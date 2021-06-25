@@ -24,8 +24,13 @@
         <td><%= book.isbn %></td>
         <td><%= book.availability %></td>
         <td><%= book.location %></td>
-        <td><%= book.reading_list_id %></td>
-        <td><%= book.reading_list.user.email %></td>
+        <% if book.reading_list %>
+          <td><%= book.reading_list_id %></td>
+          <td><%= book.reading_list.user.email %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
