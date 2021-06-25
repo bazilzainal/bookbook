@@ -4,3 +4,4 @@
 
 <%= link_to 'Show', @reading_list %> |
 <%= link_to 'Back', reading_lists_path %>
+<%= link_to 'Destroy', @reading_list, class: "btn btn-warning", method: :delete, data: { confirm: 'Are you sure?' } %>
