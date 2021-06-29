@@ -1,20 +1,22 @@
 <div class="jumbotron text-center">
   <h1>Welcome to Bookbook</h1>
-  <%= current_user.email %>
-
+  <% if user_signed_in? %>
+  <div class='badge badge-dark'><%= current_user.email %> currently signed in.</div>
+  <% end %>
   <% if !user_signed_in? %>
 
   <hr class="my-4">
   <h3>
     Sign up and start getting your reading lists now
   </h3>
-  <br/>
+  <br />
   <%= link_to "Sign up", new_user_registration_path, class: "btn btn-lg btn-primary" %>
   <% end %>
 </div>
 
 <% if user_signed_in? %>
-    <%= render 'layouts/dashboard' %>
+
+<%= render 'layouts/dashboard' %>
 
 <% end %>
 
