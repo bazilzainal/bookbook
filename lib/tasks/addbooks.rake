@@ -1,7 +1,7 @@
 require 'csv'
 task :addbook => :environment do
     
-    CSV.foreach('/Users/bazilzainal/Documents/goodreads_library_export.csv', headers: true) do |row|
+    CSV.foreach('lib/assets/goodreads_library_export.csv', headers: true) do |row|
         Book.create!(row.to_hash)
     end
 end
