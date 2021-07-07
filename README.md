@@ -1,25 +1,20 @@
-# Ruby on Rails Tutorial sample application
+# Bookbook Sg
 
-This is the sample application for
-[*Ruby on Rails Tutorial:
-Learn Web Development with Rails*](https://www.railstutorial.org/)
-(6th Edition)
-by [Michael Hartl](https://www.michaelhartl.com/).
+This is the working repo for Bookbook Sg, a web app that stores your book lists
+and checks whether it is available for loaning. The current app lives on Heroku
+[*here.*](http://bookbooksg.herokuapp.com/)
 
-## License
+## Getting Started
 
-All source code in the [Ruby on Rails Tutorial](https://www.railstutorial.org/)
-is available jointly under the MIT License and the Beerware License. See
-[LICENSE.md](LICENSE.md) for details.
+The app runs on Ruby on Rails. To run it in your local system, make sure that you
+are using Rails version 6.1.3.2 and Ruby version 3.0.1.
 
-## Getting started
-
-To get started with the app, clone the repo and then install the needed gems:
+Alternatively, you can run these commands to install everything in the Gemfile.
 
 ```
-$ gem install bundler -v 2.2.17
-$ bundle _2.2.17_ config set --local without 'production'
-$ bundle _2.2.17_ install
+$ gem install bundler
+$ bundle config set --local without 'production'
+$ bundle install
 ```
 
 Next, migrate the database:
@@ -28,7 +23,12 @@ Next, migrate the database:
 $ rails db:migrate
 ```
 
-Finally, run the test suite to verify that everything is working correctly:
+You may also have to run yarn in order to get things to work:
+```
+$ yarn
+```
+
+Optionally, run the test suite to verify that everything is working correctly:
 
 ```
 $ rails test
@@ -40,5 +40,5 @@ If the test suite passes, you'll be ready to run the app in a local server:
 $ rails server
 ```
 
-For more information, see the
-[*Ruby on Rails Tutorial* book](https://www.railstutorial.org/book).
+## Libraries
+The app relies on the NLBSG library. Further information can be found [*here.*](https://github.com/pest-control/nlbsg)
