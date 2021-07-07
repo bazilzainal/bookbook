@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>BID:</strong>
+  <%= @book.bid %>
+</p>
+
+<p>
   <strong>Availability:</strong>
   <%= @book.availability %>
 </p>
@@ -21,4 +26,4 @@
 </p>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<%= link_to 'Back', :back %>

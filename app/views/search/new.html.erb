@@ -1,0 +1,13 @@
+<% provide(:title, "Search") %>
+
+<h1>Search</h1>
+<p>
+  Type in the desired book title below.
+</p>
+
+
+<%= form_for :search, scope: :search, url: search_path, local:true do |form| %>
+  <%= form.label :query, "Search for:" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>

@@ -1,3 +1,18 @@
+@mixin box_sizing {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/* miscellaneous */
+.debug_dump {
+    clear: both;
+    float: center;
+    margin-top: 45px;
+    @include box_sizing;
+}
+
 #logo {
     float: left;
     margin-right: 10px;
