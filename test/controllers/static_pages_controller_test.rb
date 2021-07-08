@@ -4,7 +4,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
 
   def setup
-    @base_title = "Ruby on Rails Tutorial Sample App"
+    @base_title = "Bookbook SG"
   end
 
   test "should get root" do
