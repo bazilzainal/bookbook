@@ -24,12 +24,11 @@
         <td><%= book.availability %></td>
         <td><%= book.location %></td>
         <% if book.reading_list %>
-          <td><%= book.reading_list_id %></td>
-          <td><%= book.reading_list.user.email %></td>
+          <td><%= book.reading_list.name %></td>
         <% else %>
           <td></td>
-          <td></td>
         <% end %>
+        <td><%= book.user.email %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
       </tr>
     <% end %>
@@ -41,4 +40,4 @@
 
 <p> Current user is <%= current_user.email %></p>
 <% end %>
-<%= link_to 'New Book', new_book_path %>
+<%= link_to 'New Book', search_path %>

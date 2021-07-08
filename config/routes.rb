@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get '/search', to: 'search#new'
   post '/search', to: 'search#result'
+  get '/search/:bid', to: 'search#show'
 
-  
-  
+
 end

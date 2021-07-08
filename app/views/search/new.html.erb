@@ -7,7 +7,17 @@
 
 
 <%= form_for :search, scope: :search, url: search_path, local:true do |form| %>
-  <%= form.label :query, "Search for:" %>
-  <%= form.text_field :query %>
+  <%= form.label :query, "Title:" %>
+  <%= form.text_field :title %>
+
+  <%= form.label :query, "Author:" %>
+  <%= form.text_field :author %>
+
+  <%= form.label :query, "Keywords:" %>
+  <%= form.text_field :keywords %>
+
+  <%= form.label :query, "Subject" %>
+  <%= form.text_field :subject %>
+  
   <%= form.submit "Search" %>
 <% end %>
