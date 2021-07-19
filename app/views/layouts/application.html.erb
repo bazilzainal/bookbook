@@ -35,11 +35,13 @@
   <br />
   <br />
 
+  <% if Rails.env.development? %>
   <div class="container card">
     <div class="card-body">
-      <%= debug(params) if Rails.env.development? %>
+      <%= debug(params) %>
     </div>
   </div>
+  <% end %>
   <%= render 'layouts/footer' %>
 
 
