@@ -1,10 +1,30 @@
 
+<div class="jumbotron">
+  <h1 class="display-4"><%= @details.title_name %></h1>
+  <p class="lead"><%= @details.author %></p>
+  <hr class="my-4">
+    ISBN: <%= @details.isbn %><br/>
+    <% if @details.publisher%>
+        Publisher: <%= @details.publisher %><br/>
+    <% end %>
+    <% if @details.summary %>
+        Summary: <%= @details.summary %><br/>
+    <% end %>
+</div>
 
-<%= @details.title_name %><br/>
-<%= @details.author %><br/>
-<%= @details.isbn %><br/>
-<%= @details.publisher %><br/>
-<%= @details.summary %><br/>
+
+<% @availability.items.each do |item| %>
+
+<div class="card w-50">
+  <div class="card-body">
+    Library Code: <%= item[:branch_id] %><br/>
+    Library Name: <%= item[:branch_name] %><br/>
+    Status Code: <%= item[:status_code] %><br/>
+    Status Description: <%= item[:status_desc] %><br/>
+  </div>
+</div><br/>
+
+<% end %>
 
 
 

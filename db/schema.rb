@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_25_113453) do
+ActiveRecord::Schema.define(version: 2021_07_23_053114) do
+
+  create_table "book_availabilities", force: :cascade do |t|
+    t.string "location"
+    t.string "location_code"
+    t.integer "book_id"
+    t.string "status_code"
+    t.string "status_description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_book_availabilities_on_book_id"
+  end
 
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "author"
-    t.boolean "availability"
-    t.string "location"
     t.string "isbn"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

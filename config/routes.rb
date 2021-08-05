@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :book_availabilities
   resources :reading_lists
   resources :books
   devise_for :users
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   get '/search', to: 'search#new'
   post '/search', to: 'search#result'
   get '/search/:bid', to: 'search#show'
+  get '/search/update/:id', to: 'book_availabilities#update'
 
 
 end
