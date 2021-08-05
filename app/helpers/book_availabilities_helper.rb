@@ -1,0 +1,2 @@
+module BookAvailabilitiesHelper
+end
