@@ -6,48 +6,47 @@
   </p>
 
   <% @response.titles.each do |title| %>
-  <p> 
-  Title: <%= link_to title[:title_name], "search/#{title[:bid]}", target: :blank %> 
-  <%# feels a bit hacky. Any better way? search_path(title[:bid]) doesn't work %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to title[:title_name], "search/#{title[:bid]}", target: :blank %></h5>
+        <%# feels a bit hacky. Any better way? search_path(title[:bid]) doesn't work %>
+        <p class="card-text">Author: <%= title[:author] %><br/> BID: <%= title[:bid] %></p>
+        
+        <%= form_with(model: @book) do |form| %>
+          <div class="field">
+            <%= form.hidden_field :title, value: title[:title_name] %>
+          </div>
+          <div class="field">
+            <%= form.hidden_field :author, value: title[:author] %>
+          </div>
+          <div class="field">
+            <%= form.hidden_field :bid, value: title[:bid] %>
+          </div>
 
-  <br/> Author: <%= title[:author] %> 
-  <br/> BID: <%= title[:bid] %> 
-  </p>
+          <%# This checks if user is signed in. If not, submitting a book will just lead to the login page %>
+          <% if user_signed_in? %>
 
-  <%= form_with(model: @book) do |form| %>
+            <%# This checks to see if user has a reading list. If not, it will not put it in a reading list %>
+            <% if current_user.reading_lists.first %>
+              <div class="field">
+                <%= form.number_field :reading_list_id, value: current_user.reading_lists.first.id, type: :hidden %>
+              </div>
+            <% end %>
 
-    <div class="field">
-      <%= form.text_field :title, value: title[:title_name], type: :hidden %>
-    </div>
+            <div class="field">
+              <%= form.number_field :user_id, value: current_user.id, type: :hidden %>
+            </div>
 
-    <div class="field">
-      <%= form.text_field :author, value: title[:author], type: :hidden %>
-    </div>
+          <% end %>
 
-    <div class="field">
-      <%= form.number_field :bid, value: title[:bid], type: :hidden %>
-    </div>
-
-    <%# This checks if user is signed in. If not, submitting a book will just lead to the login page %>
-    <% if user_signed_in? %>
-
-      <%# This checks to see if user has a reading list. If not, it will not put it in any reading list %>
-      <% if current_user.reading_lists.first %>
-        <div class="field">
-          <%= form.number_field :reading_list_id, value: current_user.reading_lists.first.id, type: :hidden %>
-        </div>
-      <% end %>
-
-      <div class="field">
-        <%= form.number_field :user_id, value: current_user.id, type: :hidden %>
+          <div class="actions">
+            <%= form.submit value: "Add Book", class: "btn btn-warning" %>
+          </div>
+        <% end %>
       </div>
+    </div><br/>
 
-    <% end %>
-
-    <div class="actions">
-      <%= form.submit value: "Add Book" %>
-    </div>
-  <% end %>
+    
   <% end %>
 
 

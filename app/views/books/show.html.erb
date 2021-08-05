@@ -15,15 +15,30 @@
   <%= @book.bid %>
 </p>
 
-<p>
-  <strong>Availability:</strong>
-  <%= @book.availability %>
-</p>
+<% @book.book_availabilities.each do |status| %>
+<hr/>
+  <p>
+    <strong>Location Code:</strong>
+    <%= status.location_code %>
+  </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @book.location %>
-</p>
+  <p>
+    <strong>Location:</strong>
+    <%= status.location %>
+  </p>  
+
+  <p>
+    <strong>Status Code:</strong>
+    <%= status.status_code %>
+  </p>  
+
+  <p>
+    <strong>Status Description:</strong>
+    <%= status.status_description %>
+  </p>  
+
+<% end %>
+
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', :back %>
