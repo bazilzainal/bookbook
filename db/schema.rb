@@ -10,16 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_23_053114) do
+ActiveRecord::Schema.define(version: 2021_08_07_144648) do
 
   create_table "book_availabilities", force: :cascade do |t|
-    t.string "location"
     t.string "location_code"
     t.integer "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status_code"
-    t.string "status_description"
     t.index ["book_id"], name: "index_book_availabilities_on_book_id"
   end
 
@@ -30,11 +28,9 @@ ActiveRecord::Schema.define(version: 2021_07_23_053114) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "bid"
-    t.integer "user_id"
     t.integer "reading_list_id"
     t.index ["bid"], name: "index_books_on_bid"
     t.index ["reading_list_id"], name: "index_books_on_reading_list_id"
-    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
   create_table "reading_lists", force: :cascade do |t|

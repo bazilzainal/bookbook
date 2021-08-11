@@ -8,9 +8,7 @@ module BooksHelper
             book_av = BookAvailability.new do |i|
                 i.book_id = book.id
                 i.location_code = status[:branch_id]
-                i.location = status[:branch_name]
                 i.status_code = status[:status_code]
-                i.status_description = status[:status_desc]
             end
             book_av.save
         end
@@ -28,9 +26,7 @@ module BooksHelper
             book_av = BookAvailability.new do |i|
                 i.book_id = book.id
                 i.location_code = status[:branch_id]
-                i.location = status[:branch_name]
                 i.status_code = status[:status_code]
-                i.status_description = status[:status_desc]
             end
             book_av.save
         end
