@@ -4,7 +4,7 @@ module BooksHelper
         @client = ::NLBSG.client(key: 'REVWLVphaW5hbDpaYWlubGIkJV4=', env: :production)
         @availability = @client.get_availability_info(BID: book.bid)
 
-        @availability.items.each do |status|
+        @availability.items.first(5).each do |status|
             book_av = BookAvailability.new do |i|
                 i.book_id = book.id
                 i.location_code = status[:branch_id]
@@ -22,7 +22,7 @@ module BooksHelper
         # Param will be set depending on button
         book.book_availabilities.destroy_all
 
-        @availability.items.each do |status|
+        @availability.items.first(5).each do |status|
             book_av = BookAvailability.new do |i|
                 i.book_id = book.id
                 i.location_code = status[:branch_id]

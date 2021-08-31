@@ -1,48 +1,28 @@
 <% provide(:title, "Results") %>
 
 <h1>Results</h1>
-  <p>
-    Here's what we found:
-  </p>
+  <% if @response.total_records == "0" %>
+    <p>We did not find anything matching your search descriptions. Please try again.</p>
+  <% else %>
+    <p>
+      Listing <%= @response.next_record_position %> out of <%= pluralize(@response.total_records.to_i, 'record') %>.
+      </br>
+    </p>
 
-  <% @response.titles.each do |title| %>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><%= link_to title[:title_name], "search/#{title[:bid]}", target: :blank %></h5>
-        <%# feels a bit hacky. Any better way? search_path(title[:bid]) doesn't work %>
-        <p class="card-text">Author: <%= title[:author] %><br/> BID: <%= title[:bid] %></p>
-        
-        <%= form_with(model: @book) do |form| %>
-          <div class="field">
-            <%= form.hidden_field :title, value: title[:title_name] %>
-          </div>
-          <div class="field">
-            <%= form.hidden_field :author, value: title[:author] %>
-          </div>
-          <div class="field">
-            <%= form.hidden_field :bid, value: title[:bid] %>
-          </div>
+    <% @response.titles.each do |title| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to title[:title_name], "search/#{title[:bid]}", target: :blank %></h5>
+          <%# feels a bit hacky. Any better way? search_path(title[:bid]) doesn't work %>
+          <p class="card-text">Author: <%= title[:author] %><br/> BID: <%= title[:bid] %></p>
+          
+          <%= button_to "Add", search_add_path, params: {bid: title[:bid]}, target: :blank %>
 
-          <%# This checks if user is signed in. If not, submitting a book will just lead to the login page %>
-          <% if user_signed_in? %>
+        </div>
+      </div><br/>
 
-            <%# This checks to see if user has a reading list. If not, it will not put it in a reading list %>
-            <% if current_user.reading_lists.first %>
-              <div class="field">
-                <%= form.number_field :reading_list_id, value: current_user.reading_lists.first.id, type: :hidden %>
-              </div>
-            <% end %>
-
-          <% end %>
-
-          <div class="actions">
-            <%= form.submit value: "Add Book", class: "btn btn-warning" %>
-          </div>
-        <% end %>
-      </div>
-    </div><br/>
-
-    
+      
+    <% end %>
   <% end %>
 
 

@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% @books.each do |book| %>
+    <% current_user.books.each do |book| %>
       <tr>
         <td><%= link_to book.title, book %></td>
         <td><%= book.author %></td>
@@ -48,32 +48,3 @@
     <% end %>
   </tbody>
 </table>
-
-<% if !current_user.reading_lists.empty? %>
-<h3>Reading Lists</h3>
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>User</th>
-      <th>ID</th>
-      <th>Reading List ID</th>
-      <th>Books in List</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @reading_lists.each do |reading_list| %>
-      <tr>
-        <td><%= link_to reading_list.name, reading_list %></td>
-        <td><%= reading_list.name %></td>
-        <td><%= reading_list.user.email %></td>
-        <td><%= reading_list.id %></td>
-        <td><%= reading_list.books.count %></td>
-        <td><%= link_to 'Edit', edit_reading_list_path(reading_list) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>

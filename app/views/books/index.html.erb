@@ -8,41 +8,42 @@
       <th>BID</th>
       <th>Availability</th>
       <th>Location</th>
-      <th>Created On</th>
       <th>Updated On</th>
       <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @books.each do |book| %>
+    <% current_user.books.each do |book| %>
       <tr>
         <td><%= link_to book.title, book %></td>
         <td><%= book.author %></td>
         <td><%= book.bid %></td>
         <td>
-        <% book.book_availabilities.each do |status| %>
-          <% if status.status_code == nil %>
-            Nil<br/>
-          <% else %>
-            <%= status.status_code %><br/>
+          <% book.book_availabilities.each do |status| %>
+            <% if status.status_code == nil %>
+              Nil<br/>
+            <% else %>
+              <%= status.status_code %><br/>
+            <% end %>
           <% end %>
-        <% end %>
         </td>
         <td>
-        <% book.book_availabilities.each do |status| %>
-          <%= status.location_code if !status.location_code.nil? %><br/>
-        <% end %>
+          <% book.book_availabilities.each do |status| %>
+            <%= status.location_code if !status.location_code.nil? %><br/>
+          <% end %>
         </td>
-        <% if !book.book_availabilities.first.nil? %>
-          <td><%= book.book_availabilities.first.created_at %></td>
-          <td><%= book.book_availabilities.first.updated_at %></td>
-        <% else %>
-          <td>Nil</td>
-          <td>Nil</td>
-        <% end %>
+          <% if !book.book_availabilities.first.nil? %>
+            <td><%= book.book_availabilities.first.updated_at %></td>
+          <% else %>
+            <td>Nil</td>
+          <% end %>
         <td>
-          <%= link_to 'Edit', edit_book_path(book) %>
+
+          <%# This just destroys the whole book. I want to destroy the bookuser association. %>
+          <%= link_to 'Destroy Book', book, class: "btn btn-warning", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Delete Book', search, class: "btn btn-warning", params:{bid: book.bid}, method: :post, data: { confirm: 'Are you sure?' } %>
+          <%# <%= link_to 'Edit', edit_book_path(book) %>
           <%= link_to 'Update', "search/update/#{book.id}" %>
         </td>
       </tr>
@@ -51,8 +52,3 @@
 </table>
 
 <br>
-<% if user_signed_in? %>
-
-<p> Current user is <%= current_user.email %></p>
-<% end %>
-<%= link_to 'New Book', search_path %>
