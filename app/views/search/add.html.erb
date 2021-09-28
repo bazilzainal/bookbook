@@ -1,0 +1,7 @@
+<%= current_user %>
+<%= current_user.id %>
+<%= current_user.inspect %> <br>
+
+<% current_user.books.each do |book| %>
+  <%= book.title %> <br>
+<% end %>

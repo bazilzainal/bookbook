@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:show]
   
   # GET /books or /books.json
   def index
@@ -22,6 +22,7 @@ class BooksController < ApplicationController
   end
 
   # POST /books or /books.json
+  # Deprecated. Users won't create single books like this anymore
   def create
     @book = Book.new(book_params)
 
@@ -50,11 +51,21 @@ class BooksController < ApplicationController
     end
   end
 
-  # DELETE /books/1 or /books/1.json
+  # POST /books/1 or /books/1.json
+  def remove
+    # current_user.books.delete(Book.where(bid: params[:bid].first))
+    
+    # @book.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to books_url, notice: "Book was successfully removed." }
+    #   format.json { head :no_content }
+    # end
+  end
+
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: "Book was successfully destroyed." }
+      format.html { redirect_to books_url, notice: "Book was successfully removed." }
       format.json { head :no_content }
     end
   end
@@ -67,6 +78,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :author, :availability, :location, :reading_list_id, :isbn, :bid)
+      params.require(:book).permit(:title, :author, :isbn, :bid)
     end
 end
