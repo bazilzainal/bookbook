@@ -16,7 +16,7 @@ module BooksHelper
     end
 
     def update_book_availability(book)
-        @client = ::NLBSG.client(key: 'REVWLVphaW5hbDpaYWlubGIkJV4=', env: :production)
+        @client = ::NLBSG.client(key: ENV["NLB_KEY"], env: :production)
         @availability = @client.get_availability_info(BID: book.bid)
         # button will send update request
         # Param will be set depending on button

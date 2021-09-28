@@ -55,7 +55,7 @@ class SearchController < ApplicationController
         end
 
         def set_client
-            @client = ::NLBSG.client(key: 'REVWLVphaW5hbDpaYWlubGIkJV4=', env: :production)
+            @client = ::NLBSG.client(key: ENV["NLB_KEY"], env: :production)
         end
 
 
