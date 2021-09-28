@@ -39,11 +39,11 @@
           <% end %>
         <td>
 
+          <%= link_to 'Update', "search/update/#{book.id}", class: "btn btn-primary"%>
           <%# This just destroys the whole book. I want to destroy the bookuser association. %>
-          <%= link_to 'Destroy Book', book, class: "btn btn-warning", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Destroy', book, class: "btn btn-warning", method: :delete, data: { confirm: 'Are you sure?' } %>
           <%# <%= link_to 'Delete Book', search, class: "btn btn-warning", params:{bid: book.bid}, method: :post, data: { confirm: 'Are you sure?' } %>
           <%# <%= link_to 'Edit', edit_book_path(book) %>
-          <%= link_to 'Update', "search/update/#{book.id}" %>
         </td>
       </tr>
     <% end %>
