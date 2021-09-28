@@ -4,6 +4,7 @@ This is the working repo for Bookbook Sg, a web app that stores your book lists
 and checks whether it is available for loaning. The current app lives on Heroku
 [*here.*](http://bookbooksg.herokuapp.com/)
 
+![Demo Gif](https://github.com/bazilzainal/bookbook/blob/main/gif.gif)
 ## Getting Started
 
 The app runs on Ruby on Rails. To run it in your local system, make sure that you
